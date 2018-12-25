@@ -163,6 +163,8 @@ type ColumnSchema struct {
 	NotNull bool
 	// Unique reports whether the column has a unique constraint
 	Unique bool
+	// Default reports the default value for the column
+	Default string
 }
 
 func (s *ColumnSchema) Equals(s2 *ColumnSchema) bool {
@@ -171,6 +173,7 @@ func (s *ColumnSchema) Equals(s2 *ColumnSchema) bool {
 		s.PrimaryKey == s2.PrimaryKey &&
 		s.NotNull == s2.NotNull &&
 		s.Unique == s2.Unique &&
+		s.Default == s2.Default &&
 		s.Reference.Equals(s2.Reference)
 }
 
@@ -182,6 +185,10 @@ func (s *ColumnSchema) String() string {
 
 	if s.NotNull {
 		buf.WriteString(" NOT NULL")
+	}
+
+	if s.Default != "" {
+		buf.WriteString(" DEFAULT " + s.Default)
 	}
 
 	if s.Unique {
@@ -448,6 +455,9 @@ func (c *AddColumn) String() string {
 }
 
 func (c *AddColumn) MarshalText() ([]byte, error) {
+	if c.Column.NotNull && c.Column.Default == "" {
+		return nil, fmt.Errorf("column %q is not null and with no default value specified", c.Column.Name)
+	}
 	return []byte(fmt.Sprintf("ALTER TABLE %s ADD COLUMN %s;\n", c.Table, c.Column)), nil
 }
 
@@ -908,6 +918,7 @@ func (t *packageTransformer) transformField(f *Field) (*ColumnSchema, error) {
 		Type:       typ,
 		Reference:  ref,
 		Unique:     f.IsUnique(),
+		Default:    f.Default,
 	}, nil
 }
 

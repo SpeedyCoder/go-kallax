@@ -645,6 +645,8 @@ type Field struct {
 	// as defined in Go.
 	IsEmbedded bool
 
+	Default string
+
 	primaryKey      string
 	isPrimaryKey    bool
 	isUnique        bool

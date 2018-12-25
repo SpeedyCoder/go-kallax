@@ -268,6 +268,10 @@ func (p *Processor) processFields(s *types.Struct, done []*types.Struct, root bo
 			continue
 		}
 
+		// Process default
+		tag := reflect.StructTag(s.Tag(i))
+		field.Default = tag.Get("default")
+
 		fields = append(fields, field)
 	}
 
