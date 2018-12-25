@@ -3,8 +3,8 @@ package tests
 import (
 	"testing"
 
+	"github.com/SpeedyCoder/go-kallax"
 	"github.com/stretchr/testify/suite"
-	kallax "gopkg.in/src-d/go-kallax.v1"
 )
 
 type JSONSuite struct {

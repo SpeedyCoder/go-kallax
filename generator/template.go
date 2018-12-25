@@ -483,7 +483,7 @@ func printDocumentWithNumbers(code string) {
 	}
 }
 
-const pkgPath = "gopkg.in/src-d/go-kallax.v1/generator"
+const pkgPath = "github.com/SpeedyCoder/go-kallax/generator"
 
 var pkgAbsPath = func() string {
 	path, err := parseutil.DefaultGoPath.Abs(pkgPath)

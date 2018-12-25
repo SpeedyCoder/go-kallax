@@ -2,11 +2,11 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 
-	"gopkg.in/src-d/go-kallax.v1/generator"
+	"github.com/SpeedyCoder/go-kallax/generator"
 	cli "gopkg.in/urfave/cli.v1"
-	"os"
 )
 
 var Generate = cli.Command{

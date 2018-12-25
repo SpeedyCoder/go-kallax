@@ -4,8 +4,8 @@ import (
 	"net/url"
 	"time"
 
-	"gopkg.in/src-d/go-kallax.v1"
-	"gopkg.in/src-d/go-kallax.v1/tests/fixtures"
+	"github.com/SpeedyCoder/go-kallax"
+	"github.com/SpeedyCoder/go-kallax/tests/fixtures"
 )
 
 type QueryFixture struct {

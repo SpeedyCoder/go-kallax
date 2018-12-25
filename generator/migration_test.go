@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	// we need this external libs to be able to generate code corrrectly
+	// we need this external libs to be able to generate code correctly
 	_ "github.com/gofrs/uuid"
 	_ "github.com/satori/go.uuid"
 )
@@ -574,7 +574,7 @@ const packageTransformerSourceFixture = `
 package foo
 
 import (
-	"gopkg.in/src-d/go-kallax.v1"
+	"github.com/SpeedyCoder/go-kallax"
 	"net/url"
 	satori "github.com/satori/go.uuid"
 	gofrs "github.com/gofrs/uuid"
